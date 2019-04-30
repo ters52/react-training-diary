@@ -1,0 +1,16 @@
+@import "../__breakpoints.scss";
+
+
+
+
+.Home {
+  max-width: 600px;
+  width: 600px;
+  align-self: center;
+
+  @include media-breakpoint-down(xl) {
+    margin: 10px;
+  }
+
+
+}

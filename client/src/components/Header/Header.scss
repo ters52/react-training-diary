@@ -1,0 +1,49 @@
+.Header {
+  border-bottom: 1px #dedede solid;
+  display: flex;
+}
+
+.Header__logoContainer {
+  flex: 1 1 0;
+}
+
+.Header__title {
+  text-align: left;
+}
+
+.Header__menu {
+  align-self: center;
+  width: 100%;
+  text-align: right;
+  flex: 1 1 0;
+}
+
+.Header__menuList {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
+
+.Header__menuListItem {
+  flex: 1 1 50%;
+}
+
+.Header__menuListItem_left {
+  text-align: left;
+}
+
+.Header__menuListItem_right {
+  text-align: right;
+}
+
+.Header__menuListButton {
+  color: #fff;
+}
+
+.Header__logIn {
+
+}
