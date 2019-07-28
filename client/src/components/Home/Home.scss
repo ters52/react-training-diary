@@ -4,8 +4,8 @@
 
 
 .Home {
-  max-width: 600px;
-  width: 600px;
+  max-width: 100%;
+  width: 100%;
   align-self: center;
 
   @include media-breakpoint-down(xl) {

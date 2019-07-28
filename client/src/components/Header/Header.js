@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import './Header.scss';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 
 class Header extends Component {
@@ -17,13 +21,20 @@ class Header extends Component {
 
     render() {
         return (
-            <div>
                 <div className="Header">
-                    <div className="Header__logoContainer">
-                        <h1 className="Header__title">Training Diary</h1>
-                    </div>
-                    <div className="Header__menu">
-                        { this.props.isUserLoggedIn &&
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Typography variant="h6" color="inherit" className="ButtonAppBar-grow-785">
+                                Training Diary
+                            </Typography>
+                            {this.props.isUserLoggedIn &&
+                            <Button color="inherit" onClick={this.onLogoutClick}>Logout</Button>}
+
+                        </Toolbar>
+                    </AppBar>
+
+                        { false && this.props.isUserLoggedIn &&
+                        <div className="Header__menu">
                             (<ul className="Header__menuList">
                                 <li className="Header__menuListItem">
                                     <a href="" onClick={this.onLogoutClick}>
@@ -31,10 +42,9 @@ class Header extends Component {
                                     </a>
                                 </li>
                             </ul>)
+                        </div>
                         }
-                    </div>
                 </div>
-            </div>
         );
     }
 }

@@ -1,0 +1,21 @@
+.Login {
+  max-width: 600px;
+  width: 100%;
+  margin: 3em auto;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+.LoginForm__ButtonContainer {
+  display: inline-flex;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.Login_IncorrectMessage {
+  color: #FF675F;
+}

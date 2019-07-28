@@ -6,6 +6,10 @@ import Login from "./Login/Login";
 import Register from "./Register/Register";
 import Footer from "./Footer/Footer";
 
+import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import theme from "./Themes/DefaultTheme";
+
+
 import './App.scss';
 
 
@@ -31,35 +35,37 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div className="main">
-                    <Header isUserLoggedIn={this.state.isUserLoggedIn} onUpdateUserStatus={this.updateIsUserLoggedIn}/>
+                <MuiThemeProvider theme={theme}>
+                    <div className="main">
+                        <Header isUserLoggedIn={this.state.isUserLoggedIn} onUpdateUserStatus={this.updateIsUserLoggedIn}/>
 
-                    <Route exact path='/' render={(props) => (
-                        <Home {...props} isUserLoggedIn={this.state.isUserLoggedIn} />
-                    )}/>
+                        <Route exact path='/' render={(props) => (
+                            <Home {...props} isUserLoggedIn={this.state.isUserLoggedIn} />
+                        )}/>
 
-                    <Route exact path='/login' render={(props) => (
-                        <Login {...props}
-                               isUserLoggedIn={this.state.isUserLoggedIn}
-                               onUpdateUserStatus={this.updateIsUserLoggedIn} />
-                    )}/>
+                        <Route exact path='/login' render={(props) => (
+                            <Login {...props}
+                                   isUserLoggedIn={this.state.isUserLoggedIn}
+                                   onUpdateUserStatus={this.updateIsUserLoggedIn} />
+                        )}/>
 
-                    <Route exact path='/register' render={(props) => (
-                        <Register {...props}
-                               isUserLoggedIn={this.state.isUserLoggedIn}
-                               onUpdateUserStatus={this.updateIsUserLoggedIn} />
-                    )}/>
+                        <Route exact path='/register' render={(props) => (
+                            <Register {...props}
+                                   isUserLoggedIn={this.state.isUserLoggedIn}
+                                   onUpdateUserStatus={this.updateIsUserLoggedIn} />
+                        )}/>
 
-                    {/*{ this.state.isUserLoggedIn &&*/}
-                    {/*<TrainingDiary/> }*/}
+                        {/*{ this.state.isUserLoggedIn &&*/}
+                        {/*<TrainingDiary/> }*/}
 
-                    {/*{ !this.state.isUserLoggedIn &&*/}
-                    {/*<Login isUserLoggedIn={this.state.isUserLoggedIn}*/}
-                           {/*onUpdateUserStatus={this.updateIsUserLoggedIn} /> }*/}
+                        {/*{ !this.state.isUserLoggedIn &&*/}
+                        {/*<Login isUserLoggedIn={this.state.isUserLoggedIn}*/}
+                               {/*onUpdateUserStatus={this.updateIsUserLoggedIn} /> }*/}
 
 
-                    <Footer/>
-                </div>
+                        <Footer/>
+                    </div>
+                </MuiThemeProvider>
             </Router>
         );
     }

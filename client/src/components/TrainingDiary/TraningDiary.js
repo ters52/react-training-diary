@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import Training from "./Training";
-
+import {FormButton} from "../Form/Form";
 import './TrainingDiary.scss';
+import AddIcon from '@material-ui/icons/Add';
+import CloseIcon from '@material-ui/icons/Close';
+import Fab from '@material-ui/core/Fab';
+import Grid from '@material-ui/core/Grid';
+
 
 
 let initialData = [
@@ -144,7 +149,8 @@ class TrainingsList extends Component {
     handleRemoveTraining(e) {
         e.preventDefault();
 
-        const trainingId = e.target.getAttribute("data-training-num");
+
+        const trainingId = e.currentTarget.getAttribute("data-training-num");
 
         if(trainingId) {
             let updatedData = JSON.parse(JSON.stringify(this.state.trainingsData));
@@ -171,15 +177,23 @@ class TrainingsList extends Component {
                               isEdit={trainingData.openEditForm}
                               data={trainingData}
                               id={index}
-                              updateTrainingData={updateTrainingData}>
-                        <br/>
-                        <button key={"removeTrainingButton" + index + trainingData.date}
-                                className="TrainingEditForm__removeTrainingButton"
-                                onClick={handleRemoveTraining}
-                                data-training-num={"" + index}>
-                            Remove training
-                        </button>
-                        <br/><br/>
+                              updateTrainingData={updateTrainingData}
+                              handleRemoveTraining={handleRemoveTraining}>
+                        {/*<FormButton key={"removeTrainingButton" + index + trainingData.date}*/}
+                        {/*        className="TrainingEditForm__removeTrainingButton"*/}
+                        {/*        onClick={handleRemoveTraining}*/}
+                        {/*        data-training-num={"" + index}>*/}
+                        {/*    Remove training*/}
+                        {/*</FormButton>*/}
+                        {/*<Fab key={"removeTrainingButton" + index + trainingData.date}*/}
+                        {/*     size="small"*/}
+                        {/*     color="secondary"*/}
+                        {/*     aria-label="Remove training"*/}
+                        {/*     className="TrainingEditForm__removeTrainingButton"*/}
+                        {/*     onClick={handleRemoveTraining}*/}
+                        {/*     data-training-num={"" + index}>*/}
+                        {/*    <CloseIcon/>*/}
+                        {/*</Fab>*/}
                     </Training>
 
             );
@@ -188,17 +202,19 @@ class TrainingsList extends Component {
 
         return(
             <div className="TrainingsList">
-                {trainings.length > 0 && trainings}
-                {trainings.length < 1 &&
-                    <p>You haven't any trainings yet.</p>
-                }
-
-                <br/><br/>
-                <button className="TrainingEditForm__addTrainingButton"
-                        onClick={this.handleAddTraining}>
-                    Add training
-                </button>
-                <br/>
+                <Grid container spacing={24}>
+                    <Grid item xs={12}>
+                        {trainings.length > 0 && trainings}
+                        {trainings.length < 1 &&
+                        <p>You haven't any trainings yet.</p>
+                        }
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Fab color="primary" aria-label="Add" className="TrainingEditForm__addTrainingButton" onClick={this.handleAddTraining}>
+                            <AddIcon />
+                        </Fab>
+                    </Grid>
+                </Grid>
             </div>
         );
     }

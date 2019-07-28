@@ -1,32 +1,36 @@
 import React from "react";
 import './Form.scss';
-
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const Input = (props) => {
+
     return(
-        <div className={"Input " + props.className}>
-            <label htmlFor={props.name} className={"Input__label " + props.className + "__label"}>{props.title}</label>
-            <input type={props.type}
-                   name={props.name}
-                   className={"Input__field " + props.className + "__field"}
-                   onChange={props.onChange}
-                   value={props.value}/>
-        </div>
+        <TextField
+            label={props.title}
+            className={props.className}
+            value={props.value}
+            type={props.type}
+            name={props.name}
+            onChange={props.onChange}
+            margin="normal"
+            variant="outlined"
+        />
 
     );
 };
 
-const Button = (props) => {
+const FormButton = (props) => {
 
     let dataProps = {...props};
     dataProps["className"] = "Button " + props.className;
-    delete dataProps["title"];
-
+    dataProps["variant"] = dataProps["variant"] ? dataProps["variant"] : 'contained';
 
     return(
-        <button {...dataProps}>
-            {props.title}
-        </button>
+        <Button {...dataProps}>
+            {props.children}
+        </Button>
+
     );
 };
 
@@ -35,7 +39,8 @@ const Form = (props) => {
     return(
         <form action={props.action}
               className={"Form " + props.className}
-              onSubmit={props.onSubmit}>
+              onSubmit={props.onSubmit}
+              maxWidth={props.maxWidth ? props.maxWidth : ""}>
             {props.children}
         </form>
     );
@@ -45,4 +50,4 @@ const Form = (props) => {
 
 
 
-export { Form, Input, Button }
+export { Form, Input, FormButton }
